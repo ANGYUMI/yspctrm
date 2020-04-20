@@ -1,0 +1,120 @@
+/* 
+INTERACTIVE BRANDING PROJECT CODE
+COPYRIGHT (C) 2020 GYU MI AN, TAE SOL BEE. ALL RIGHTS RESERVED.
+*/
+
+PImage tex;
+color boxColor;
+float x = 0, y = 0;
+float w, h;
+float tw, th;
+float stepSize = 5.0;
+float bld1x, bld1y, bld1z, bld2x, bld2y, bld2z, bld3x, bld3y, bld3z;
+
+void setup() {
+  
+  size(800, 800, P3D);
+  boxColor = color(0, 51, 102); 
+//  noCursor();
+  cursor(CROSS);
+
+// ------ mouse variable ------
+  x = mouseX;
+  y = mouseY;
+  
+// ------ default ------
+  w = width;
+  h = height;
+
+// ------ translate default ------
+  tw = width/2;
+  th = height/2;
+
+// ------ location ------
+  //building1
+  bld1x = -w/4;
+  bld1y = h;
+  
+  //building2  
+  bld2x = w/2;
+  bld2y = -h/4;
+  
+  //building3
+  bld3x = w+w/4;
+  bld3y = h+h/4;
+  
+}
+
+void draw() {
+  background(20, 122, 255);
+  translate(tw, th);
+    
+// ------ light ------ 
+  ambientLight(40, 40, 40);
+//  directionalLight(105, 105, 105, mouseX, mouseY, 0);
+  specular(255, 255, 255); // light color
+
+  pointLight(255, 255, 255, mouseX, mouseY, 0); // syn: (r, g, b, x, y, z);
+  lightSpecular(225, 225, 225);
+  float s = map(mouseX, 0, w, 1, 10);
+  shininess(s);
+
+// ------ sun ------
+  pushMatrix();
+  translate(mouseX, mouseY, -w*6); 
+  noStroke();
+  fill(255, 255, 0);
+  ellipse(0, 0, 200, 200);
+//  sphere(90);
+  popMatrix();
+  
+  
+// ------ buildings ------   
+  fill(255);
+  stroke(255);
+//  noStroke();
+  strokeWeight(0.5);
+ 
+  //building1
+  pushMatrix();
+  translate(bld1x, bld1y, 0);
+  rotate(60);
+  box(300, 400, 6000);//box1
+  popMatrix();
+  
+  //building2
+  pushMatrix();
+  translate(bld2x, bld2y, 0);
+  rotate(120);
+  box(300, 300, 6200);//box2
+  popMatrix();
+
+  //building3
+  pushMatrix();
+  translate(bld3x, bld3y, 0); 
+  rotate(80);
+  box(400, 400, 6800);//box2
+  popMatrix();
+
+
+  if (mousePressed) {
+ 
+    camera(x, y, (height/2) / tan(PI/6), width/2, height/2, 0, 0, 1, 0);
+
+// ------ translate control ------
+    tw = -w/2+x;  
+    th = -h/2+y;
+
+// ------ mouse control ------    
+    float d = dist(x, y, mouseX, mouseY);
+
+    if (d > stepSize) {
+      float angle = atan2(mouseY-y, mouseX-x);
+      
+      x = x + cos(angle) * stepSize;
+      y = y + sin(angle) * stepSize; 
+    
+    }
+      
+  }
+}
