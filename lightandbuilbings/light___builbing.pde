@@ -39,9 +39,9 @@ void draw() {
   
   //sun
   pushMatrix();
-  translate(width/2, height/2, 0); 
+  translate(width/2, height/2, -width*5); 
   noStroke();
-  sphere(25);
+  sphere(100);
   popMatrix();
   
 }
