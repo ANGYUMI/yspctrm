@@ -50,15 +50,14 @@ void draw() {
   translate(tw, th);
     
 // ------ light ------ 
-//  ambientLight(102, 102, 102);
+  ambientLight(60, 60, 60);
+  directionalLight(255, 255, 255, 0, 0, -1);
+  specular(255, 255, 255); // light color
+
   pointLight(255, 255, 255, mouseX, mouseY, -width/2); // syn: (r, g, b, x, y, z);
-  lightSpecular(204, 204, 204);
+  lightSpecular(200, 200, 200);
   float s = map(mouseX, 0, w, 1, 10);
   shininess(s);
-  
-//  directionalLight(102, 102, 102, 0, 0, -1);
-//  specular(255, 0, 255); // light color
-
 
 // ------ sun ------
   pushMatrix();
