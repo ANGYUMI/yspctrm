@@ -1,8 +1,8 @@
+PImage tex;
 color boxColor;
 
 void setup() {
   size(800, 800, P3D);
-  translate(mouseX, mouseY, mouseY/2);
   boxColor = color(0, 51, 102); 
 }
 
@@ -17,6 +17,11 @@ void draw() {
 //  directionalLight(102, 102, 102, 0, 0, -1);
 //  specular(255, 0, 255); // light color
   
+//  noFill();
+//  fill(255);
+
+//  translate(-width/2+mouseX, -height/2+mouseY,0);
+
   //building_1
   pushMatrix();
   translate(0, height/2, -height/4);
