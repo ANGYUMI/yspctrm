@@ -1,0 +1,45 @@
+float w, h;
+
+void setup() { 
+  size(800, 800, P3D); 
+  
+  w = width;
+  h = height;
+  
+}
+
+void draw() { 
+  background(0, 255, 255); 
+  pushMatrix();
+ 
+  translate(w/2, h/2);
+  
+  stroke(0);
+  fill(255, 255, 0);
+  
+  pushMatrix();
+  translate(-w, 0, 0);
+  box(w, h, h*5);
+  popMatrix();
+  
+  pushMatrix();
+  translate(0, -h, 0);
+  box(w, h, h*5);
+  popMatrix();
+    
+  pushMatrix();
+  translate(0, h, 0);
+  box(w, h, h*5);
+  popMatrix();
+    
+  pushMatrix();
+  translate(w, 0, 0);
+  box(w, h, h*5);
+  popMatrix();
+  
+  popMatrix();
+  
+   if (mousePressed) {
+     camera(mouseX, mouseY, (height/2) / tan(PI/6), width/2, height/2, 0, 0, 1, 0);
+   }
+}
