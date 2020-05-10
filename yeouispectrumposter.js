@@ -1,4 +1,4 @@
-let img, img2, img3;
+let img
 
 
 function setup() {
@@ -39,5 +39,5 @@ function draw() {
   box(270, 180, 1800);//box3
   endShape();
   pop();
-  
+ 
 }
